@@ -1,0 +1,137 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=dataset-link&theme=dark&code=M4UwLgKglgtiD2BXMAKAZogdgYzFemABCgJSEDeAUIYfAA54GEC8F1NhANiAOYiYATAFwUAvgBp2NMPHic8dEVQ4cwAJyg8-akQHIAhgA8owXZJU1gAC3gB3AMIEw_MCLT7OoKYQneB-sH1QVzYLQmAkNWwQEQBtbxVY3To1eAFEXDNCXQAmAAYARgBOLNy8_NL8nILK8pzanIBmBoAWXQBdczDCJMBAeUAsOSyAVgA2ADoh8UIADhyxgqnp6bGAdimVvPmpocaxlsWh-c6EjiTAck1AIOVhgq3CIZv9u8OFu93G9d3pqZHllePunq6QDwOlcpi1Ni8RnMct8ihMpo1xo8WocYYRGnMhv9uklABtZgHK_QBKiYB0vSyOVRCJWtxaNzRBS-6N2RTBcIK7RO7JUvhUhgAgsZgEpCGAAJ50GLZbABXjwNQi3Q-Lo0EX8kxCngaAQASUEIEMIjyiu8GqgwgowvoeiGQwApAruRxQBoQIKeidlN1ReK9JwoJgQGYTpYYLIwFYROpECAlRYnVAXQAZfQipBgABCIr0qVsgYBIBgdCsQTV5rQ8GwiFdujjLvtJwdKg9YS9Et0vv9ue6wBD8DDEbUUZjKhrwCTKeQGazdk7YXzheLrvIhDLFarI7rYQbHCbFhbPr9AaHjp7feFA-jQfCIGdo-Tqcn2WzM4sc6LwBLS5Xlb06589aPO4qHu2Ttoel7dqG4ZnoO4HXvGt7jummaPtOR40K-C5Cl-a5wbWf6bgBl7Ack8bPiopp6HQpFoYQaj6AIUDftkjR5HaNHRJgzg6ICQysZUtodDRGHvoul40NhP4gJwaC6JeW4qJw-gAEZSUoYnLrKMABFxejkEpohKAAAvkxSiMQ5ACKINokLJALyRw_DYGkEqARYUDODAABy-hwJRqTpJkNE0AAbh4UZ6CZJRBRacgKBFhQlHJ9beJyPgANzsDAIr2EWahgGMBAoLoiB0P4ziqsAAAK8B-lxWQYDgjBECgIDBS4ZA7k5mDAGAhB8gKOpliwhCtS4YxGC6g3wLEeTtBl5FoMQ_UmFNHUnF1PWEAxcDdfgRCsMtwBTWMoWcFGhAANSEAU80WFlOX6HlYzBAA8gwe0oK5li4aJAI0BR2RUWBf1cMpqmhCDGlqFpYA6dkekGRQhlJJdW2wPw75MFdHRmZ9lnWbZf32SojnOWpkOEKd4VoztmOYNF0iyPIUCKDTGN7epohJZuJC3TQXP87zmXZbl-Wve9hX0E1QuiLzQA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-graph-modularity/2/files/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, 'dark', {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    setTimeout(function () {
+  option = {
+    legend: {},
+    tooltip: {
+      trigger: 'axis',
+      showContent: false
+    },
+    dataset: {
+      source: [
+        ['product', '2019', '2020', '2021', '2022', '2023', '2024'],
+        ['企业', 56.5, 82.1, 88.7, 70.1, 53.4, 85.1],
+        ['大厂', 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
+        ['小厂', 40.1, 62.2, 69.5, 36.4, 45.2, 32.5],
+        ['高级酒店', 25.2, 37.1, 41.2, 18, 33.9, 49.1]
+      ]
+    },
+    xAxis: { type: 'category' },
+    yAxis: { gridIndex: 0 },
+    grid: { top: '55%' },
+    series: [
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'pie',
+        id: 'pie',
+        radius: '30%',
+        center: ['50%', '25%'],
+        emphasis: {
+          focus: 'self'
+        },
+        label: {
+          formatter: '{b}: {@2019} ({d}%)'
+        },
+        encode: {
+          itemName: 'product',
+          value: '2019',
+          tooltip: '2019'
+        }
+      }
+    ]
+  };
+  myChart.on('updateAxisPointer', function (event) {
+    const xAxisInfo = event.axesInfo[0];
+    if (xAxisInfo) {
+      const dimension = xAxisInfo.value + 1;
+      myChart.setOption({
+        series: {
+          id: 'pie',
+          label: {
+            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+          },
+          encode: {
+            value: dimension,
+            tooltip: dimension
+          }
+        }
+      });
+    }
+  });
+  myChart.setOption(option);
+});
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
