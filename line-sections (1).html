@@ -1,0 +1,150 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=line-sections&theme=dark&code=PYBwLglsB2AEC8sDeAoWtJgDYFMBcya6GOAHmAQOSUA0R6AzgK4BGYZFs1RAvnemGDAskEAVTEMAJwgBzWTilUAhqQgNa9WKvUAFYBGjslhSQICeIfFwDGU4Aw1aevfhiFYWwUuK0MAFsAA7gRgUkw4bugAZjjKYExS1hJmDMoAbjgAggwAkgC2ygriLpKlsHxEpFlqDL6SYJbWlDbxOLLAUuaakl5M0AAmyl0A4spisNHKWAyRWgD087AgSWCQigC0ctCdOFpDYMoEANqUAAxneBe0XGcAjHh3AKw35wBMeADMZ69nn3gAFheNFuTyuPxB5wAbI9gbcAOxfCG3AAcgLhlDul2ukLuD2erzuH2-hP-QMJYJxXDuMIJuMRJNxaPJkLe2ORlDe-Ixb2JHLeZJeAF1XERzDV1PViI0rFR0tMIj1iDoGAAZZQsHBYKWSaKdQprRRUJDyrARHiwADqlGcUW0tX0hmMOuIDGg41C4T2ZVF6HS6iY0wAsh7TK7AiFJtNZnaBhB8jhoAwoNACGc7SAIDgbDg6rBjlp0CkzLARNYoXbJDZhJ0qLIkombSXKiXi2ZZJwK4XiGWCCjK8Rq1ha1wkgMm2YW2Y25IO32B-he7A7gCF7AhyPKPWcI3u1PJDPiHPl6vu4v2AQ7vC1xuTJQxxOygPD-hj1ebzW79vd82tCL0FOswyLmJxaIe7oJlQgAUroArK6APOJSoNE0VBYIYOCIa6-RCGA_iehEA6LMsqzrFIWyyDsSTdgcRz5t86awG8KL0W8TzMVCzHwvRdEgk8rE8RcIIAgJsCfAAnFxTEgmJ9FCfRrH0ex9HwnxsBMUpwmKYJFxCgOhRSAA1lkSQ0S-sAQOw-QAMqNLgLolreVBSLILDKAAFCxTwglenxefC16wGcAB0AIAJSPpOa7UaBJaSAWMXTmeMUQc0gCXpoAG1mAA86GHxeg1S1FQZwMj8iVPiVxCmSWeWStS7LhfF5TxTpZVxTlRZlZIyVUIAWmaZdlOVVXmmJFXVMX7jlFVmANVBcrCI2_q1_4xYtPorbAIo8AA3EAA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-graph-modularity/2/files/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, 'dark', {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  title: {
+    text: '',
+    subtext: ''
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+  toolbox: {
+    show: true,
+    feature: {
+      saveAsImage: {}
+    }
+  },
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    // prettier-ignore
+    data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
+  },
+  yAxis: {
+    type: 'value',
+    axisLabel: {
+      formatter: '{value} W'
+    },
+    axisPointer: {
+      snap: true
+    }
+  },
+  visualMap: {
+    show: false,
+    dimension: 0,
+    pieces: [
+      {
+        lte: 6,
+        color: 'green'
+      },
+      {
+        gt: 6,
+        lte: 8,
+        color: 'red'
+      },
+      {
+        gt: 8,
+        lte: 14,
+        color: 'green'
+      },
+      {
+        gt: 14,
+        lte: 17,
+        color: 'red'
+      },
+      {
+        gt: 17,
+        color: 'green'
+      }
+    ]
+  },
+  series: [
+    {
+      name: '用电量',
+      type: 'line',
+      smooth: true,
+      // prettier-ignore
+      data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],
+      markArea: {
+        itemStyle: {
+          color: 'rgba(255, 173, 177, 0.4)'
+        },
+        data: [
+          [
+            {
+              name: '早高峰',
+              xAxis: '07:30'
+            },
+            {
+              xAxis: '10:00'
+            }
+          ],
+          [
+            {
+              name: '晚高峰',
+              xAxis: '17:30'
+            },
+            {
+              xAxis: '21:15'
+            }
+          ]
+        ]
+      }
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

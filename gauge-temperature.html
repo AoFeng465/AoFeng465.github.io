@@ -1,0 +1,188 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=gauge-temperature&theme=dark&version=5.2.1&code=PYBwLglsB2AEC8sDeAoWsDOBTAThLGAXLANprrLkWxgCeIWxA5AOYCGAri1kwDRUUAxlmhhcxEkwCsABgCkfWEwDs8pgF1-1dBjBscYAILQWAG0awATDJlbtIgCbGzFgLTW71ALYRoxWwLoXmwAHsQAbAHamCCmEGAAchxeAEbisACMlp4U8VheAMp05sSo0eiCwKbAOMwAxAAsGeEAnACiGUyBsAC-OeggOMAsOARElOWYABbAAO7EYDgcWP0UsxAOYFPEAMwy3X3dIMC-YrUT5Rgz87AAZmym2AeroRAYADK-FmXlcdBYRVoJQuk3Wm22sD23XQPWe3VeGAAKhBBABrUrQ2AON56aDCYiuKTZTEYWLxJKpdJSVboP4A4rfTHoMFbYjEyYVKo1eotXldSaw6KHaKkuJgT7_DGTbG6Nh4txEmmwcwmVmZBpKumA4E_UEbNU7JWc6rnJh1XktfnlQXaYXaBHvNhpUxS8oy3H42DuKLlSomnl8pW3GBgAoQABeFmscOicsEM3Ouu0VzmxHujywMe0kDAOpJ1zTDyeQtWDiweggLpB2gAbg9lsYIMFIDAFksVpiWRCmJEFJqvgAJLAQFhTMDEBo-6IpGplnAAJTY2I44wAHErgLdbtgwABhERnCS2JRqTSY4OiMORtlT7QXsAAdWHo_HShnpjnfHPNWbh6USDrUxlh6WAAAbdy_SY_W5JRfCmXB4itag7WoBw2D0CRMSTaJAOWG9MRtah1AEFDq3QOgGGYdguB4VZhFEdJJFkPslFUBQzxFPQDGcYFrFvdBHB4twPG6Hw_FgfjYGCMJYEiVY8kKBlXWiaDTTqVdlF3No2gAISQihSIGIYRjGZTkwLGh2yVLtiHXLNqGOU50mwigUxudNi1tF4QjeCVGUmNzCwzeyKARZE0TM6hAruItMxLbpRXiPzItciyPLirz4R8j4nSwKsXJ0NLYpC9AywrfL81TGLgvi6I0Iw0gsKZWBcKjfYBW6YjkPIYiegAbhQHcAEkGJwQCAApbg4PEWzgcaAEoLkqaBdFgHA5QcYAvAQWAAGpxoAWXQqYADp1ugTavAW2AACpZJkeaTrAYAADEIBCLAHHGyx5oG9AIFuWBxvOy6AD5rEWpMAeBjatoAHkneaCqk2hdymfQwBOncAHlwCgaBxqTbA8AITDomR-q2DJjlkeoVriBBrbmsI7Qusy8nMUp6nJlpih6bW2GvGZzE2e6ojyB6X6SIllA-lgWQbF-oA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.2.1/files/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.2.1/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-graph-modularity/2/files/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.2.1/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, 'dark', {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  series: [
+    {
+      type: 'gauge',
+      center: ['50%', '70%'],
+      startAngle: 200,
+      endAngle: -20,
+      min: 0,
+      max: 60,
+      splitNumber: 12,
+      itemStyle: {
+        color: '#4169E1'
+      },
+      progress: {
+        show: true,
+        width: 30
+      },
+      pointer: {
+        show: false
+      },
+      axisLine: {
+        lineStyle: {
+          width: 30
+        }
+      },
+      axisTick: {
+        distance: -52,
+        splitNumber: 5,
+        lineStyle: {
+          width: 2,
+          color: '#999'
+        }
+      },
+      splitLine: {
+        distance: -52,
+        length: 14,
+        lineStyle: {
+          width: 3,
+          color: '#999'
+        }
+      },
+      axisLabel: {
+        distance: -20,
+        color: '#999',
+        fontSize: 20
+      },
+      anchor: {
+        show: false
+      },
+      title: {
+        show: false
+      },
+      detail: {
+        valueAnimation: true,
+        width: '60%',
+        lineHeight: 40,
+        borderRadius: 8,
+        offsetCenter: [0, '0%'],
+        fontSize: 20,
+        fontWeight: 'bolder',
+        formatter: '{value} °C',
+        color: 'inherit'
+      },
+      data: [
+        {
+          value: 20
+        }
+      ]
+    },
+    {
+      type: 'gauge',
+      center: ['50%', '70%'],
+      startAngle: 200,
+      endAngle: -20,
+      min: 0,
+      max: 60,
+      itemStyle: {
+        color: '#87CEEB'
+      },
+      progress: {
+        show: true,
+        width: 8,
+      },
+      pointer: {
+        show: false
+      },
+      axisLine: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      },
+      splitLine: {
+        show: false
+      },
+      axisLabel: {
+        show: false
+      },
+      detail: {
+        show: false
+      },
+      data: [
+        {
+          value: 20
+        }
+      ]
+    }
+  ]
+};
+setInterval(function () {
+  const random = +(Math.random() * 60).toFixed(2);
+  if (random>20) {
+    if(random<40){
+        myChart.setOption({
+    series: [
+      {
+        data: [
+          {
+            value: random
+          }
+        ]
+      },
+      {
+        data: [
+          {
+            value: random
+          }
+        ]
+      }
+    ]
+  });
+    }
+  }
+}, 5000);
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
